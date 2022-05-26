@@ -91,8 +91,8 @@ public class PersonController {
 
     @GetMapping("/people_example")
     public List<Person> saveAllPeople(){
-        Person teacher1 = new Person("Maria", "Petrova", "Alexandrovna", 'T');
-        Person teacher2 = new Person("Victor", "Alexeev", "Ivanovich",'T');
+        Person teacher1 = new Person("Maria", "Petrova", "Alexandrovna", 'P',null);
+        Person teacher2 = new Person("Victor", "Alexeev", "Ivanovich",'P',null);
         Group group1 = new Group("a");
         Group group2 = new Group("b");
         Subject subject1 = new Subject("OOP");
@@ -100,7 +100,7 @@ public class PersonController {
         Subject subject3 = new Subject("English");
 
         Mark mark = new Mark(5);
-        Person student1 = new Person("Sergei", "S", "Sergeevich", 'S');
+        Person student1 = new Person("Sergei", "S", "Sergeevich",  'S');
         student1.setGroup(group1);
         mark.setSubject(subject1);
         mark.setTeacher(teacher1);

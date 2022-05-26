@@ -156,7 +156,7 @@ public class PersonServiceImpl implements PersonService{
             throw new EntityException("There is no person in the database with id: " + id);
         }
         Person person = personOptional.get();
-        if (person.getType() == 'T'){
+        if (person.getType() == 'P'){
             List<Mark> marks = markRepository.findAll();
             for (Mark m:marks){
                 if (m.getTeacher().getFirstName().equals(person.getFirstName())
@@ -170,16 +170,16 @@ public class PersonServiceImpl implements PersonService{
     }
 
     public void checkInfo(Person person){
-        if (person.getType() != 'S' && person.getType() != 'T'){
+        if (person.getType() != 'S' && person.getType() != 'P'){
             throw new WrongEntityParameterException("Wrong type of person, must be 'S' or 'T'!");
         }
-        if (person.getType() == 'T' && person.getGroup() != null){
+        if (person.getType() == 'P' && person.getGroup() != null){
             throw new WrongEntityParameterException("Teacher can't have a group!");
         }
-        if (person.getType() == 'T' && !person.getMarks().isEmpty()){
+        if (person.getType() == 'P' && !person.getMarks().isEmpty()){
             throw new WrongEntityParameterException("Teacher can't have a marks!");
         }
-        if (person.getType() == 'T'){
+        if (person.getType() == 'P'){
             return;
         }
         if (person.getType() == 'S' && person.getGroup() == null){

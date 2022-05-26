@@ -3,10 +3,7 @@ package com.coursework.dean_auto.controller;
 import com.coursework.dean_auto.entity.Group;
 import com.coursework.dean_auto.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +22,9 @@ public class GroupController {
     public List<Group> getAllGroupsByName(@PathVariable String groupName){
         return groupService.getAllGroupsByName(groupName);
     }
+
+/*    @DeleteMapping("/group/id/{id}")
+    public String deleteGroupById(@PathVariable Integer id){
+        return groupService.deleteGroupById(id);
+    }*/
 }

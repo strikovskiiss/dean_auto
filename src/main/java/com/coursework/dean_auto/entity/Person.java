@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "people")
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -25,13 +25,13 @@ public class Person {
     @Column(name = "father_name")
     private String fatherName;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "group_id")
-    private Group group;
-
     @Column(name = "type")
     @NotNull
     private Character type;
+
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "group_id")
+    private Group group;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private List<Mark> marks;
@@ -45,6 +45,15 @@ public class Person {
         this.lastName = lastName;
         this.fatherName = fatherName;
         this.type = type;
+        marks = new ArrayList<>();
+    }
+
+    public Person(String firstName, String lastName, String fatherName, Character type, Group group){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fatherName = fatherName;
+        this.type = type;
+        this.group = group;
         marks = new ArrayList<>();
     }
 

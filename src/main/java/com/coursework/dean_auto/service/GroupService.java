@@ -7,4 +7,5 @@ import java.util.List;
 public interface GroupService {
     List<Group> getAllGroups();
     List<Group> getAllGroupsByName(String groupName);
+/*    String deleteGroupById(Integer id);*/
 }
