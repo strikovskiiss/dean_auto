@@ -13,12 +13,12 @@ public class GroupController {
     @Autowired
     GroupService groupService;
 
-    @GetMapping("/groups/all")
+    @GetMapping("/all")
     public List<Group> getAllGroups(){
         return groupService.getAllGroups();
     }
 
-    @GetMapping("/groups/name/{groupName}")
+    @GetMapping("/name/{groupName}")
     public List<Group> getAllGroupsByName(@PathVariable String groupName){
         return groupService.getAllGroupsByName(groupName);
     }

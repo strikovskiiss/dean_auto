@@ -17,79 +17,80 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
-    @PostMapping("/people/save")
+    @PostMapping("/save")
     public Person savePerson(@RequestBody Person person){
         return personService.savePerson(person);
     }
 
-    @PutMapping("/people/update")
+    @PutMapping("/update")
     public Person updatePerson(@RequestBody Person person){
         return personService.updatePerson(person);
     }
 
-    @GetMapping("/people/id/{id}")
-    public Person getPersonById(@PathVariable Integer id){
+    @GetMapping("/id")
+    public Person getPersonById(@RequestParam("id") Integer id){
         return personService.getPersonById(id);
     }
 
-    @GetMapping("/people/all")
+    @GetMapping("/all")
     public List<Person> getAllPeople() {
         return personService.getAllPeople();
     }
 
-    @GetMapping("/people/name/{name}")
-    public List<Person> getPeopleByFirstName(@PathVariable String name){
+    @GetMapping("/name")
+    public List<Person> getPeopleByFirstName(@RequestParam("name") String name){
         return personService.getPeopleByFirstName(name);
     }
 
-    @GetMapping("/people/surname/{surname}")
-    public List<Person> getPeopleByLastName(@PathVariable String surname){
+    @GetMapping("/surname")
+    public List<Person> getPeopleByLastName(@RequestParam("surname") String surname){
         return personService.getPeopleByLastName(surname);
     }
 
-    @GetMapping("/people/fathername/{fatherName}")
-    public List<Person> getPeopleByFatherName(@PathVariable String fatherName) {
+    @GetMapping("/fathername")
+    public List<Person> getPeopleByFatherName(@RequestParam("fatherName") String fatherName) {
         return personService.getPeopleByFatherName(fatherName);
     }
 
-    @GetMapping("/people/name_surname/{name}_{surname}")
-    public List<Person> getPeopleByNameAndSurname(@PathVariable String name, @PathVariable String surname){
+    @GetMapping("/name_surname/")
+    public List<Person> getPeopleByNameAndSurname(@RequestParam("name") String name,
+                                                  @RequestParam("surname") String surname){
         return personService.getPeopleByNameAndSurname(name,surname);
     }
 
-    @GetMapping("/people/full_name/{name}_{surname}_{fathername}")
+    @GetMapping("/full_name/{name}_{surname}_{fathername}")
     public List<Person> getPeopleByFullName(@PathVariable String name, @PathVariable String surname,
                                             @PathVariable String fathername){
         return personService.getPeopleByFullName(name,surname,fathername);
     }
 
-    @GetMapping("/people/group_name/{groupName}")
-    public List<Person> getPeopleByGroupName(@PathVariable String groupName) {
+    @GetMapping("/group_name")
+    public List<Person> getPeopleByGroupName(@RequestParam("groupName") String groupName) {
         return personService.getPeopleByGroupName(groupName);
     }
 
-    @GetMapping("/people/mark_value/{markValue}")
-    public Map<Integer, Person> getPeopleByMarkValue(@PathVariable int markValue) {
+    @GetMapping("/mark_value/")
+    public Map<Integer, Person> getPeopleByMarkValue(@RequestParam("markValue") int markValue) {
         return personService.getPeopleByMarkValue(markValue);
     }
 
-    @GetMapping("/people/subject/{subjectName}")
-    public Map<Integer, Person> getPeopleBySubject(@PathVariable String subjectName) {
+    @GetMapping("/subject/")
+    public Map<Integer, Person> getPeopleBySubject(@RequestParam("subjectName") String subjectName) {
         return personService.getPeopleBySubject(subjectName);
     }
 
-    @GetMapping("/people/mark_subject/{markValue}_{subjectName}")
+    @GetMapping("/mark_subject/{markValue}_{subjectName}")
     public Map<Integer, Person> getPeopleByMarkAndSubject(@PathVariable int markValue, @PathVariable String subjectName)
     {
         return personService.getPeopleByMarkAndSubject(markValue, subjectName);
     }
 
-    @DeleteMapping("/people/id/{id}")
-    public String deletePersonById(@PathVariable Integer id) {
+    @DeleteMapping("/id")
+    public String deletePersonById(@RequestParam("id") Integer id) {
         return personService.deletePersonById(id);
     }
 
-    @GetMapping("/people_example")
+    @GetMapping("/example")
     public List<Person> saveAllPeople(){
         Person teacher1 = new Person("Maria", "Petrova", "Alexandrovna", 'P',null);
         Person teacher2 = new Person("Victor", "Alexeev", "Ivanovich",'P',null);
@@ -100,13 +101,13 @@ public class PersonController {
         Subject subject3 = new Subject("English");
 
         Mark mark = new Mark(5);
-        Person student1 = new Person("Sergei", "S", "Sergeevich",  'S');
+        Person student1 = new Person("Mark", "Sherbenko", "Sergeevich",  'S');
         student1.setGroup(group1);
         mark.setSubject(subject1);
         mark.setTeacher(teacher1);
         student1.addMark(mark);
 
-        Mark mark2 = new Mark(3);
+        Mark mark2 = new Mark(4);
         mark2.setSubject(subject2);
         mark2.setTeacher(teacher1);
         student1.addMark(mark2);

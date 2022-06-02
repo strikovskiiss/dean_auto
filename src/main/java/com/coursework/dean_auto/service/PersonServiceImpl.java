@@ -185,9 +185,9 @@ public class PersonServiceImpl implements PersonService{
         if (person.getType() == 'S' && person.getGroup() == null){
             throw new WrongEntityParameterException("Student must have a group!");
         }
-        if (person.getType() == 'S' && (person.getMarks().isEmpty() || person.getMarks() == null)){
+        /*if (person.getType() == 'S' && (person.getMarks().isEmpty() || person.getMarks() == null)){
             throw new WrongEntityParameterException("Student must have a marks!");
-        }
+        }*/
         List<Mark> marks = person.getMarks();
         List<String> subjects = marks.stream().map(i -> i.getSubject().getName()).distinct().collect(Collectors.toList());
         System.out.println("Subjects  : " + subjects.size() + "\n Marks : " + marks.size());

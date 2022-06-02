@@ -13,12 +13,12 @@ public class MarkController {
     @Autowired
     MarkService markService;
 
-    @PostMapping("/marks/save")
+    @PostMapping("/save")
     public Mark saveMark(@RequestBody Mark mark){
         return markService.saveMark(mark);
     }
 
-    @GetMapping("/marks/all")
+    @GetMapping("/all")
     public List<Mark> getAllMarks(){
         return markService.getAllMarks();
     }
